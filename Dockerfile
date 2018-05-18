@@ -1,7 +1,7 @@
-FROM debian:jessie
+FROM alpine:3.7
 
 LABEL maintainer="tim.spiekerkoetter@hdnet.de"
 
-RUN apt-get update && \
-    apt-get install -y rsync git ssh && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk --update add git openssh-client rsync && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm /var/cache/apk/*
